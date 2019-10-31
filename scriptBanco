@@ -1,0 +1,12 @@
+CREATE TABLE doador (
+    IDDoador Integer NOT NULL PRIMARY KEY,
+    Nome varchar(150),
+    Rua varchar(150),
+    numero Integer,
+    bairro varchar(200),
+    dataNascimento Date,
+    nomePai varchar(150),
+    nomeMae varchar(150),
+    rg varchar(14)
+);
+    
