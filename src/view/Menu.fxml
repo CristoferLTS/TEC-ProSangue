@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<BorderPane fx:id="borderMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuController">
+   <top>
+      <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menuDoador" mnemonicParsing="false" text="Doador">
+            <items>
+              <MenuItem fx:id="mIDoadorCadastrar" mnemonicParsing="false" onAction="#abreCadDoador" text="Cadastrar" />
+                  <MenuItem fx:id="mIDoadorAlterar" mnemonicParsing="false" onAction="#abreAltDoador" text="Alterar" />
+                  <MenuItem fx:id="mIDoadorExcluir" mnemonicParsing="false" onAction="#abreExcDoador" text="Excluir" />
+                  <MenuItem fx:id="mIDoadorConsultar" mnemonicParsing="false" onAction="#abreConDoador" text="Consultar" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuDoacoes" mnemonicParsing="false" text="Doações">
+            <items>
+              <MenuItem fx:id="mIDoacoesCadastrar" mnemonicParsing="false" text="Cadastrar" />
+                  <MenuItem fx:id="mIDoacoesAlterar" mnemonicParsing="false" text="Alterar " />
+                  <MenuItem fx:id="mIDoacoesExcluir" mnemonicParsing="false" text="Excluir" />
+                  <MenuItem fx:id="mIDoacoesConsultar" mnemonicParsing="false" text="Consultar" />
+                  <MenuItem fx:id="mIDoacoesExames" mnemonicParsing="false" text="Exames" />
+                  <MenuItem fx:id="mIDoacoesTriagem" mnemonicParsing="false" text="Triagem" />
+                  <MenuItem fx:id="mIDoacoesEntrevista" mnemonicParsing="false" text="Entrevista" />
+            </items>
+          </Menu>
+            <Menu fx:id="menuRelatorios" mnemonicParsing="false" text="Relatórios">
+              <items>
+                <MenuItem fx:id="mIRelatoriosDoadores" mnemonicParsing="false" text="Doadores" />
+                  <MenuItem fx:id="mIRelatorioDoacoes" mnemonicParsing="false" text="Doações" />
+              </items>
+            </Menu>
+            <Menu fx:id="menuSair" mnemonicParsing="false" text="Sair" />
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <StackPane fx:id="sPMenu" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
