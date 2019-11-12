@@ -9,10 +9,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-/**
- *
- * @author cristofer
- */
 public class Principal extends Application {
     
     @Override

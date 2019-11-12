@@ -26,12 +26,6 @@ public class MenuController implements Initializable{
     private MenuItem mIDoadorCadastrar;
 
     @FXML
-    private MenuItem mIDoadorAlterar;
-
-    @FXML
-    private MenuItem mIDoadorExcluir;
-
-    @FXML
     private MenuItem mIDoadorConsultar;
 
     @FXML
@@ -41,22 +35,19 @@ public class MenuController implements Initializable{
     private MenuItem mIDoacoesCadastrar;
 
     @FXML
-    private MenuItem mIDoacoesAlterar;
-
-    @FXML
-    private MenuItem mIDoacoesExcluir;
-
-    @FXML
     private MenuItem mIDoacoesConsultar;
 
     @FXML
     private MenuItem mIDoacoesExames;
 
     @FXML
-    private MenuItem mIDoacoesTriagem;
+    private Menu mPerguntas;
 
     @FXML
-    private MenuItem mIDoacoesEntrevista;
+    private MenuItem mIPerguntasCadastrar;
+
+    @FXML
+    private MenuItem mIPerguntasConsultar;
 
     @FXML
     private Menu menuRelatorios;
@@ -74,22 +65,52 @@ public class MenuController implements Initializable{
     private StackPane sPMenu;
 
     @FXML
-    void abreAltDoador(ActionEvent event) {
+    void abrirCadDoacoes(ActionEvent event) {
 
     }
 
     @FXML
-    void abreCadDoador(ActionEvent event) {
+    void abrirCadDoador(ActionEvent event) {
 
     }
 
     @FXML
-    void abreConDoador(ActionEvent event) {
+    void abrirCadPerguntas(ActionEvent event) {
 
     }
 
     @FXML
-    void abreExcDoador(ActionEvent event) {
+    void abrirConConsultar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirConDoador(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirConExames(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirConsDoacoes(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirRelDoacoes(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirRelDoadores(ActionEvent event) {
+
+    }
+
+    @FXML
+    void fechar(ActionEvent event) {
 
     }
 
@@ -97,6 +118,5 @@ public class MenuController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         
     }
-
 
 }
