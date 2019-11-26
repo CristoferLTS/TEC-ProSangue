@@ -19,6 +19,7 @@ public class Principal extends Application {
             Stage stage = new Stage();
             stage.setTitle("Menu");
             stage.setScene(new Scene(root));
+            stage.setFullScreen(true);
             stage.show();
         } catch (IOException ex) {
             Alert error = new Alert(Alert.AlertType.ERROR);

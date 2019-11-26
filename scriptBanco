@@ -1,12 +1,71 @@
-CREATE TABLE doador (
-    IDDoador Integer NOT NULL PRIMARY KEY,
-    Nome varchar(150),
-    Rua varchar(150),
-    numero Integer,
-    bairro varchar(200),
-    dataNascimento Date,
-    nomePai varchar(150),
-    nomeMae varchar(150),
-    rg varchar(14)
+CREATE TABLE Doador (
+    ID_Doador INT NOT NULL UNIQUE,
+    Nome VARCHAR(150),
+    Rua VARCHAR(150),
+    Numero INT,
+    Bairro VARCHAR(150),
+    Complemento VARCHAR(150),
+    CEP INT,
+    Cidade VARCHAR(150),
+    UF CHAR(2),
+    Data_Nascimento DATE,
+    Nome_Pai VARCHAR(150),
+    Nome_Mae VARCHAR(150),
+    RG VARCHAR(13)
 );
-    
+
+CREATE TABLE Doacao (
+    Codigo INT NOT NULL UNIQUE,
+    ID_Doador INT,
+    Data DATE,
+    Hora TIME,
+    Anemia BOOLEAN,
+    Peso NUMERIC(5,2),
+    Pulso NUMERIC(2,2),
+    Temperatura NUMERIC(2,2),
+    Pressao NUMERIC(2,2)
+);
+
+CREATE TABLE Resposta (
+    ID_Resposta INT NOT NULL UNIQUE,
+    ID_Pergunta INT,
+    ID_Doacao INT,
+    Resposta VARCHAR(1000)
+);
+
+CREATE TABLE Testes (
+    ID_Testes INT NOT NULL UNIQUE,
+    ID_Doacao INT,
+    HepatiteB BOOLEAN DEFAULT FALSE,
+    AIDS BOOLEAN DEFAULT FALSE,
+    Sifilis BOOLEAN DEFAULT FALSE,
+    HepatiteC BOOLEAN DEFAULT FALSE,
+    HTVL BOOLEAN DEFAULT FALSE,
+    Chagas BOOLEAN DEFAULT FALSE,
+    Tipo_Sanguineo CHAR(1),
+    Rh CHAR(1),
+    Anticorpos NUMERIC(2,2),
+    Resultado BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE Pergunta (
+    ID_Pergunta INT PRIMARY KEY UNIQUE,
+    Pergunta VARCHAR(1000)
+);
+ 
+ALTER TABLE Doacao ADD CONSTRAINT Doador
+    FOREIGN KEY (ID_Doador)
+    REFERENCES Doador (ID_Doador);
+ 
+ALTER TABLE Resposta ADD CONSTRAINT ID_Pergunta
+    FOREIGN KEY (ID_Pergunta)
+    REFERENCES Pergunta (ID_Pergunta);
+ 
+ALTER TABLE Resposta ADD CONSTRAINT ID_Doacao
+    FOREIGN KEY (ID_Doacao)
+    REFERENCES Doacao (Codigo);
+ 
+ALTER TABLE Testes ADD CONSTRAINT ID_Doacao
+    FOREIGN KEY (ID_Doacao)
+    REFERENCES Doacao (Codigo);
+

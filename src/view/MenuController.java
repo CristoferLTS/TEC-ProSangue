@@ -1,15 +1,22 @@
 package view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class MenuController implements Initializable{
 
@@ -71,7 +78,21 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirCadDoador(ActionEvent event) {
-
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("CadDoador.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Cadastro de Doador");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Carregar Cadastro de Doadores: "+ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
