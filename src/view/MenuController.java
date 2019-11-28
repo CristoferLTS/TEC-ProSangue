@@ -13,6 +13,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -73,7 +80,7 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirCadDoacoes(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -107,7 +114,23 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirConDoador(ActionEvent event) {
-
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Consulta.fxml"));
+        ConsultaController.tipoTabela = "doador";
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Doador");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Carregar Consulta: " + ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
@@ -137,7 +160,9 @@ public class MenuController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        Image image = new Image(getClass().getResourceAsStream("assets/Pro-Sangue.jpg"));
+        BackgroundImage background = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        borderMenu.setBackground(new Background(background));
     }
 
 }

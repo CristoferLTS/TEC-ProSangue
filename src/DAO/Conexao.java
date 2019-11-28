@@ -9,10 +9,10 @@ import javax.swing.JOptionPane;
 
 public class Conexao {
     
-    private final String DRIVER = "org.postgresql.Driver";
-    private final String URL = "jdbc:postgresql://localhost:5432/postgres/ProSangue";
-    private final String USER = "postgres";
-    private final String PASS = "postgres";
+    private final String DRIVER = "com.mysql.jdbc.Driver";
+    private final String URL = "jdbc:mysql://localhost:3306/PROSANGUE";
+    private final String USER = "root";
+    private final String PASS = "mysql";
     
     public Connection getConnection() {
         //faço a conexao com o banco de dados
@@ -22,7 +22,7 @@ public class Conexao {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
         }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null,"Erro em SQL");
+            JOptionPane.showMessageDialog(null,"Erro na Conexão");
         }
         return null;
         

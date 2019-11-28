@@ -1,5 +1,5 @@
 CREATE TABLE Doador (
-    ID_Doador INT NOT NULL UNIQUE,
+    ID_Doador INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     Nome VARCHAR(150),
     Rua VARCHAR(150),
     Numero INT,
@@ -7,7 +7,7 @@ CREATE TABLE Doador (
     Complemento VARCHAR(150),
     CEP INT,
     Cidade VARCHAR(150),
-    UF CHAR(2),
+    UF VARCHAR(2),
     Data_Nascimento DATE,
     Nome_Pai VARCHAR(150),
     Nome_Mae VARCHAR(150),
@@ -15,7 +15,7 @@ CREATE TABLE Doador (
 );
 
 CREATE TABLE Doacao (
-    Codigo INT NOT NULL UNIQUE,
+    Codigo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ID_Doador INT,
     Data DATE,
     Hora TIME,
@@ -27,15 +27,15 @@ CREATE TABLE Doacao (
 );
 
 CREATE TABLE Resposta (
-    ID_Resposta INT NOT NULL UNIQUE,
+    ID_Resposta INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     ID_Pergunta INT,
     ID_Doacao INT,
     Resposta VARCHAR(1000)
 );
 
 CREATE TABLE Testes (
-    ID_Testes INT NOT NULL UNIQUE,
-    ID_Doacao INT,
+    ID_Testes INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    IDDoacao INT,
     HepatiteB BOOLEAN DEFAULT FALSE,
     AIDS BOOLEAN DEFAULT FALSE,
     Sifilis BOOLEAN DEFAULT FALSE,
@@ -49,7 +49,7 @@ CREATE TABLE Testes (
 );
 
 CREATE TABLE Pergunta (
-    ID_Pergunta INT PRIMARY KEY UNIQUE,
+    ID_Pergunta INT PRIMARY KEY AUTO_INCREMENT,
     Pergunta VARCHAR(1000)
 );
  
@@ -65,7 +65,7 @@ ALTER TABLE Resposta ADD CONSTRAINT ID_Doacao
     FOREIGN KEY (ID_Doacao)
     REFERENCES Doacao (Codigo);
  
-ALTER TABLE Testes ADD CONSTRAINT ID_Doacao
-    FOREIGN KEY (ID_Doacao)
+ALTER TABLE Testes ADD CONSTRAINT IDDoacao
+    FOREIGN KEY (IDDoacao)
     REFERENCES Doacao (Codigo);
 
