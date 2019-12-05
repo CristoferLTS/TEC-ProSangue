@@ -19,6 +19,7 @@ import java.sql.Date;
 */
 public class Doador {
     
+    private int idDoador;
     private String nome;
     private String rua;
     private Integer numero;
@@ -31,6 +32,15 @@ public class Doador {
     private String nomePai;
     private String nomeMae;
     private String rg;
+    
+    
+    public int getIdDoador() {
+        return idDoador;
+    }
+
+    public void setIdDoador(int idDoador) {
+        this.idDoador = idDoador;
+    }
 
     public String getNome() {
         return nome;

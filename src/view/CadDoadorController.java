@@ -5,7 +5,7 @@
  */
 package view;
 
-import view.ConsultaController;
+import view.ConsultaDoadorController;
 import DAO.Dao;
 import Services.ClienteCEPWS;
 import java.io.IOException;
@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,6 +45,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import static javafx.scene.input.KeyCode.TAB;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -103,13 +105,10 @@ public class CadDoadorController implements Initializable {
     private ComboBox<String> cBUF;
 
     @FXML
+    private HBox hboxButtons;
+
+    @FXML
     private Button bCadastrar;
-
-    @FXML
-    private Button bEditar;
-
-    @FXML
-    private Button bExcluir;
 
     void preencherCampos(Doador doador) {
         tFNome.setText(doador.getNome());
@@ -117,8 +116,8 @@ public class CadDoadorController implements Initializable {
 
     @FXML
     void pesquisarDoador(ActionEvent event) {
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Consulta.fxml"));
-        ConsultaController.tipoTabela = "doador";
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("ConsultaDoador.fxml"));
+        ConsultaDoadorController.retorno = "doador";
         Stage myStage = (Stage) CadVbox.getScene().getWindow();
         myStage.close();
         try {
@@ -163,7 +162,11 @@ public class CadDoadorController implements Initializable {
         } catch (SQLException ex) {
             System.out.println("Erro em Inserir novo Doador" + ex);
         }
-
+        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmation.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        confirmation.setHeaderText("Sucesso");
+        confirmation.setTitle("Cadastro Realizado com sucesso");
+        confirmation.showAndWait();
     }
 
     @FXML
@@ -185,8 +188,65 @@ public class CadDoadorController implements Initializable {
         }
     }
 
+    public void editDoador() {
+        Button bExcluir = new Button();
+        bExcluir.setText("Excluir");
+        hboxButtons.getChildren().add(bExcluir);
+        EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println(selectedDoador.getIdDoador());
+                String nome = tFNome.getText();
+                String rua = tFRua.getText();
+                Integer num = Integer.parseInt(tFNumero.getText());
+                String bairro = tFBairro.getText();
+                String complemento = tFComplemento.getText();
+                Integer cep = Integer.parseInt(tFCEP.getText());
+                String cidade = tFCidade.getText();
+                String uf = cBUF.getSelectionModel().getSelectedItem();
+                LocalDate localDate = dpNascimento.getValue();
+                //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+                System.out.println(sqlDate);
+                String nomePai = tfNomePai.getText();
+                String nomeMae = tfNomeMae.getText();
+                String rg = tFRG.getText();
+                Object[] dados = {nome, rua, num, bairro, complemento, cep, cidade, uf, sqlDate, nomePai, nomeMae, rg, selectedDoador.getIdDoador()};
+                Dao dao = new Dao();
+                try {
+                    dao.update("update Doador set Nome = ?, Rua = ?, Numero = ?, Bairro = ?, Complemento = ?, CEP = ?,"
+                            + "Cidade = ?, UF = ?, Data_Nascimento = ?, Nome_Pai = ?, Nome_Mae = ?, RG = ? where ID_Doador = ?", dados);
+                } catch (SQLException ex) {
+                    System.out.println("Deu ruin");
+                }
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmation.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                confirmation.setHeaderText("Sucesso");
+                confirmation.setTitle("Atualização Realizada com sucesso");
+                confirmation.showAndWait();
+            }
+        };
+        bCadastrar.setOnAction(buttonHandler);
+        EventHandler<ActionEvent> editHandler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Dao dao = new Dao();
+                Object[] dados = {selectedDoador.getIdDoador()};
+                try {
+                    dao.delete("delete from Doador where ID_Doador = ?", dados);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CadDoadorController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        };
+        bExcluir.setOnAction(editHandler);
+    }
+
     public void initData(Doador doador) {
         selectedDoador = doador;
+        selectedDoador.setIdDoador(doador.getIdDoador());
+        System.out.println(selectedDoador.getIdDoador());
         tFNome.setText(selectedDoador.getNome());
         tFRG.setText(selectedDoador.getRg());
         dpNascimento.setValue(selectedDoador.getDataNascimento().toLocalDate());
@@ -210,8 +270,6 @@ public class CadDoadorController implements Initializable {
         iBPesquisar.setPreserveRatio(true);
         bPesquisar.setGraphic(iBPesquisar);
         cBUF.setItems(ufs);
-        bEditar.setDisable(true);
-        bExcluir.setDisable(true);
     }
 
 }

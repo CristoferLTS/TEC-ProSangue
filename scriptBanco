@@ -20,10 +20,10 @@ CREATE TABLE Doacao (
     Data DATE,
     Hora TIME,
     Anemia BOOLEAN,
-    Peso NUMERIC(5,2),
-    Pulso NUMERIC(2,2),
-    Temperatura NUMERIC(2,2),
-    Pressao NUMERIC(2,2)
+    Peso FLOAT,
+    Pulso FLOAT,
+    Temperatura FLOAT,
+    Pressao FLOAT
 );
 
 CREATE TABLE Resposta (
@@ -44,7 +44,7 @@ CREATE TABLE Testes (
     Chagas BOOLEAN DEFAULT FALSE,
     Tipo_Sanguineo CHAR(1),
     Rh CHAR(1),
-    Anticorpos NUMERIC(2,2),
+    Anticorpos FLOAT,
     Resultado BOOLEAN DEFAULT FALSE
 );
 

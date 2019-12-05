@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="cadVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="422.0" stylesheets="@caddoacao.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CadDoacaoController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="37.0" prefWidth="600.0" stylesheets="@caddoacao.css">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nova Doação">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="412.0" spacing="10.0">
+         <children>
+            <Label text="Doador:" />
+            <TextField fx:id="tFDoador" prefHeight="26.0" prefWidth="239.0" />
+            <Button fx:id="bPesquisar" mnemonicParsing="false" onAction="#pesquisarDoador" text="Pesquisar" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="412.0" spacing="26.0">
+         <children>
+            <Label text="Data:" />
+            <JFXDatePicker fx:id="dpData" prefHeight="26.0" prefWidth="239.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="412.0" spacing="25.0">
+         <children>
+            <Label text="Hora:" />
+            <JFXTimePicker fx:id="tpHora" defaultColor="#003f8f" prefHeight="26.0" prefWidth="240.0" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="422.0" spacing="10.0">
+         <children>
+            <Button fx:id="bRegistrar" mnemonicParsing="false" onAction="#registrarDoacao" text="Registrar Doação" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

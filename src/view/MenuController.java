@@ -80,7 +80,21 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirCadDoacoes(ActionEvent event) {
-        
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("CadDoacao.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Cadastro de Doação");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Carregar Cadastro de Doação: "+ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
@@ -114,8 +128,8 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirConDoador(ActionEvent event) {
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Consulta.fxml"));
-        ConsultaController.tipoTabela = "doador";
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("ConsultaDoador.fxml"));
+        ConsultaDoadorController.retorno = "doador";
         try {
             Parent root = (Parent) fxmlloader.load();
             Stage stage = new Stage();
@@ -140,7 +154,21 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirConsDoacoes(ActionEvent event) {
-
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("ConsultaDoacoes.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Doação");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Carregar Consulta: " + ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
