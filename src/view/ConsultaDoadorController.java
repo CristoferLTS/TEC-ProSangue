@@ -1,15 +1,10 @@
 package view;
 
 import DAO.Dao;
-import com.jfoenix.controls.JFXTreeTableView;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
@@ -46,6 +42,55 @@ public class ConsultaDoadorController implements Initializable {
     private TableView<Doador> tableView;
 
     static String retorno;
+    
+    String filtro = "";
+    
+    ObservableList<Doador> doadores;
+    
+    @FXML
+    void filtrarTabela(KeyEvent event) {
+        filtro = "%" + tFFiltro.getText() + "%";
+        doadores.clear();
+        Object[] dados = {filtro, filtro, filtro, filtro, filtro};
+        Dao dao = new Dao();
+        try {
+            ResultSet result;
+            if (filtro.equals("%%")) {
+                result = dao.select("SELECT * FROM Doador");
+            } else {
+                result = dao.select("SELECT * FROM Doador dd where Nome like ? or "
+                        + "CONVERT(Data_Nascimento, CHAR) like ? or "
+                        + "Nome_Pai like ? or "
+                        + "Nome_Mae like ? or "
+                        + "RG like ?", dados);
+            }
+            while (result.next()) {
+                Doador doador = new Doador();
+                doador.setIdDoador(result.getInt("ID_Doador"));
+                doador.setNome(result.getString("Nome"));
+                doador.setRua(result.getString("Rua"));
+                doador.setNumero(result.getInt("Numero"));
+                doador.setBairro(result.getString("Bairro"));
+                doador.setComplemento(result.getString("Complemento"));
+                doador.setCep(result.getInt("Cep"));
+                doador.setCidade(result.getString("Cidade"));
+                doador.setUf(result.getString("UF"));
+                doador.setDataNascimento(result.getDate("Data_Nascimento"));
+                doador.setNomePai(result.getString("Nome_Pai"));
+                doador.setNomeMae(result.getString("Nome_Mae"));
+                doador.setRg(result.getString("RG"));
+                doadores.add(doador);
+            }
+
+        } catch (SQLException e) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Buscar Triagem: " + e);
+            error.showAndWait();
+        }
+    }
 
     @FXML
     void selecionarLinha(ActionEvent event) throws IOException {
@@ -70,7 +115,7 @@ public class ConsultaDoadorController implements Initializable {
                 error.setContentText("Falha em Carregar Menu: " + ex);
                 error.showAndWait();
             }
-        } else if ("doacao".equals(retorno)) {
+        } else if ("doador".equals(retorno)) {
             Doador doadorSelecionado = tableView.getSelectionModel().getSelectedItem();
             FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("CadDoacao.fxml"));
             try {
@@ -106,7 +151,7 @@ public class ConsultaDoadorController implements Initializable {
         TableColumn<Doador, String> paiCol = new TableColumn("Pai");
         paiCol.setCellValueFactory(new PropertyValueFactory<>("nomePai"));
         tableView.getColumns().addAll(nameCol, rgCol, dataCol, maeCol, paiCol);
-        ObservableList<Doador> doadores = FXCollections.observableArrayList();
+        doadores = FXCollections.observableArrayList();
         Dao dao = new Dao();
         tableView.setItems(doadores);
         try {

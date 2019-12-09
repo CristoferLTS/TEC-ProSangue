@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="245.0" prefWidth="511.0" spacing="10.0" stylesheets="@../css/respostasquestionario.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RespostasQuestionarioController">
+   <children>
+      <Label fx:id="labelPergunta" text="Label" />
+      <TextArea fx:id="textArea" prefHeight="157.0" prefWidth="491.0" />
+      <HBox alignment="CENTER" prefHeight="31.0" prefWidth="481.0" spacing="10.0">
+         <children>
+            <Button fx:id="bAnterior" mnemonicParsing="false" onAction="#anterior" text="Anterior" />
+            <Button fx:id="bResponder" mnemonicParsing="false" onAction="#responder" text="Responder" />
+            <Button fx:id="bProximo" mnemonicParsing="false" onAction="#proximo" text="Próximo" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

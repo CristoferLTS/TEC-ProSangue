@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,15 +9,14 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@consulta.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ConsultaDoacoesController">
    <top>
-      <HBox prefHeight="40.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Pesquisar:">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField fx:id="tFFiltro" prefHeight="26.0" prefWidth="376.0" />
-            <Button fx:id="bSelecionar" mnemonicParsing="false" onAction="#selecionarLinha" text="Selecionar" />
+            <TextField fx:id="tFFiltro" onKeyReleased="#filtrarTabela" prefHeight="26.0" prefWidth="376.0" />
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

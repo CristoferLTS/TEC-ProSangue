@@ -17,7 +17,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <TextField fx:id="tFFiltro" prefHeight="26.0" prefWidth="376.0" />
+            <TextField fx:id="tFFiltro" onKeyReleased="#filtrarTabela" prefHeight="26.0" prefWidth="376.0" />
             <Button fx:id="bSelecionar" mnemonicParsing="false" onAction="#selecionarLinha" text="Selecionar" />
          </children>
          <BorderPane.margin>

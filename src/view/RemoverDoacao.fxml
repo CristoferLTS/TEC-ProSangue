@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="600.0" stylesheets="@../css/removerdoacao.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RemoverDoacaoController">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="600.0" spacing="15.0" styleClass="hbox">
+         <children>
+            <Label text="Código:" />
+            <TextField fx:id="tFPesquisar" />
+            <Button fx:id="bPesquisar" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Separator prefHeight="0.0" prefWidth="600.0" />
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="55.0" styleClass="hbox" stylesheets="@../css/removerdoacao.css">
+         <children>
+            <Label text="Doador:" />
+            <TextField fx:id="tFDoador" editable="false" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="75.0" styleClass="hbox">
+         <children>
+            <Label text="Data:" />
+            <JFXDatePicker fx:id="dPData" disable="true" editable="false" />
+         </children></HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="75.0" styleClass="hbox">
+         <children>
+            <Label text="Hora:" />
+            <JFXTimePicker fx:id="tPHora" disable="true" />
+         </children></HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="56.0" styleClass="hbox">
+         <children>
+            <Label text="Anemia:" />
+            <JFXRadioButton fx:id="rbSim" disable="true" text="Sim">
+               <toggleGroup>
+                  <ToggleGroup fx:id="tGAnemia" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rbNao" disable="true" text="Não" toggleGroup="$tGAnemia" />
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="70.0" styleClass="hbox">
+         <children>
+            <Label text="Peso:" />
+            <TextField fx:id="tFPeso" editable="false" />
+         </children></HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="65.0" styleClass="hbox">
+         <children>
+            <Label text="Pulso:" />
+            <TextField fx:id="tFPulso" editable="false" />
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="20.0" styleClass="hbox">
+         <children>
+            <Label text="Temperatura:" />
+            <TextField fx:id="tFTemperatura" editable="false" />
+         </children>
+      </HBox>
+      <HBox prefHeight="50.0" prefWidth="600.0" spacing="45.0" styleClass="hbox">
+         <children>
+            <Label text="Pressão: " />
+            <TextField fx:id="tFPressao" editable="false" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="2.0" prefWidth="594.0" styleClass="hbox">
+         <children>
+            <Button fx:id="bExcluir" mnemonicParsing="false" onAction="#excluir" text="Excluir" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

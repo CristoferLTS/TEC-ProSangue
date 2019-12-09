@@ -14,7 +14,7 @@ public class Doacao {
     private Float peso;
     private Float pulso;
     private Float temperatura;
-    private Float pressao;
+    private String pressao;
 
     public String getNomeDoador() {
         return nomeDoador;
@@ -88,11 +88,11 @@ public class Doacao {
         this.temperatura = temperatura;
     }
 
-    public Float getPressao() {
+    public String getPressao() {
         return pressao;
     }
 
-    public void setPressao(Float pressao) {
+    public void setPressao(String pressao) {
         this.pressao = pressao;
     }
     

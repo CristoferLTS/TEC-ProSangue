@@ -38,6 +38,9 @@ public class Dao {
                 if(campos[i]instanceof Float){
                     pst.setFloat(i+1, Float.valueOf(String.valueOf(campos[i])));
                 }
+                if(campos[i]instanceof Boolean){
+                    pst.setBoolean(i+1, Boolean.valueOf(String.valueOf(campos[i])));
+                }
                 if (campos[i] instanceof byte[]) {
                     pst.setBytes(i + 1, (byte[]) campos[i]);
                 }
@@ -78,6 +81,9 @@ public class Dao {
                 }
                 if(campos[i]instanceof Float){
                     pst.setFloat(i+1, Float.valueOf(String.valueOf(campos[i])));
+                }
+                if(campos[i]instanceof Boolean){
+                    pst.setBoolean(i+1, Boolean.valueOf(String.valueOf(campos[i])));
                 }
                 if (campos[i] instanceof byte[]) {
                     pst.setBytes(i + 1, (byte[]) campos[i]);

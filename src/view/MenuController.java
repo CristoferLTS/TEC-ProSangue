@@ -25,7 +25,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class MenuController implements Initializable{
+public class MenuController implements Initializable {
 
     @FXML
     private BorderPane borderMenu;
@@ -50,6 +50,9 @@ public class MenuController implements Initializable{
 
     @FXML
     private MenuItem mIDoacoesConsultar;
+
+    @FXML
+    private MenuItem mIDoacoesExcluir;
 
     @FXML
     private MenuItem mIDoacoesExames;
@@ -79,6 +82,73 @@ public class MenuController implements Initializable{
     private StackPane sPMenu;
 
     @FXML
+    private MenuItem mlDoacoesTriagem;
+    
+    @FXML
+    private MenuItem mIPerguntasQuestionario;
+    
+    
+    @FXML
+    void abrirQuestionario(ActionEvent event) {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Questionario.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Questionario");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Erro");
+            error.setTitle("Não foi possível realizar essa operação");
+            error.setContentText("Falha em Carregar Questionário " + ex);
+            error.showAndWait();
+        }
+    }
+
+    @FXML
+    void abrirTriagem(ActionEvent event) {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Triagem.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Realizar Triagem");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em Carregar Triagem: " + ex);
+            error.showAndWait();
+        }
+
+    }
+
+    @FXML
+    void abrirExcluirDoacao(ActionEvent event) {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("RemoverDoacao.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Remover Doação");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Error");
+            error.setTitle("Error");
+            error.setContentText("Falha em abrir Exclusão de Doação: " + ex);
+            error.showAndWait();
+        }
+    }
+
+    @FXML
     void abrirCadDoacoes(ActionEvent event) {
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("CadDoacao.fxml"));
         try {
@@ -92,7 +162,7 @@ public class MenuController implements Initializable{
             error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             error.setHeaderText("Error");
             error.setTitle("Error");
-            error.setContentText("Falha em Carregar Cadastro de Doação: "+ex);
+            error.setContentText("Falha em Carregar Cadastro de Doação: " + ex);
             error.showAndWait();
         }
     }
@@ -111,19 +181,48 @@ public class MenuController implements Initializable{
             error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             error.setHeaderText("Error");
             error.setTitle("Error");
-            error.setContentText("Falha em Carregar Cadastro de Doadores: "+ex);
+            error.setContentText("Falha em Carregar Cadastro de Doadores: " + ex);
             error.showAndWait();
         }
     }
 
     @FXML
     void abrirCadPerguntas(ActionEvent event) {
-
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("CadastrarPergunta.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Cadastro de Pergunta");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Erro");
+            error.setTitle("Não foi Possível realizar essa operação");
+            error.setContentText("Falha em Carregar Cadastro de pergunta: "+ ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
-    void abrirConConsultar(ActionEvent event) {
-
+    void abrirConPerguntas(ActionEvent event) {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("EditarPerguntas.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Consulta de Perguntas");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Erro");
+            error.setTitle("Não foi Possível realizar essa operação");
+            error.setContentText("Falha em Carregar Consulta de pergunta: "+ ex);
+            error.showAndWait();
+        }
     }
 
     @FXML
@@ -149,7 +248,21 @@ public class MenuController implements Initializable{
 
     @FXML
     void abrirConExames(ActionEvent event) {
-
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Exames.fxml"));
+        try {
+            Parent root = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Exames");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            Alert error = new Alert(Alert.AlertType.ERROR);
+            error.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            error.setHeaderText("Erro");
+            error.setTitle("Não foi Possível abrir Exames");
+            error.setContentText("Falha em Carregar Exames: " + ex);
+            error.showAndWait();
+        }
     }
 
     @FXML

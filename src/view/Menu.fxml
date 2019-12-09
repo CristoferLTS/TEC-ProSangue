@@ -20,13 +20,16 @@
             <items>
               <MenuItem fx:id="mIDoacoesCadastrar" mnemonicParsing="false" onAction="#abrirCadDoacoes" text="Cadastrar" />
                   <MenuItem fx:id="mIDoacoesConsultar" mnemonicParsing="false" onAction="#abrirConsDoacoes" text="Consultar" />
+                  <MenuItem fx:id="mlDoacoesTriagem" mnemonicParsing="false" onAction="#abrirTriagem" text="Realizar Triagem" />
                   <MenuItem fx:id="mIDoacoesExames" mnemonicParsing="false" onAction="#abrirConExames" text="Exames" />
+                  <MenuItem fx:id="mIDoacoesExcluir" mnemonicParsing="false" onAction="#abrirExcluirDoacao" text="Excluir" />
             </items>
           </Menu>
             <Menu fx:id="mPerguntas" mnemonicParsing="false" text="Perguntas">
               <items>
                 <MenuItem fx:id="mIPerguntasCadastrar" mnemonicParsing="false" onAction="#abrirCadPerguntas" text="Cadastrar" />
-                  <MenuItem fx:id="mIPerguntasConsultar" mnemonicParsing="false" onAction="#abrirConConsultar" text="Consultar" />
+                  <MenuItem fx:id="mIPerguntasConsultar" mnemonicParsing="false" onAction="#abrirConPerguntas" text="Consultar" />
+                  <MenuItem fx:id="mIPerguntasQuestionario" mnemonicParsing="false" onAction="#abrirQuestionario" text="Questionário" />
               </items>
             </Menu>
             <Menu fx:id="menuRelatorios" mnemonicParsing="false" text="Relatórios">

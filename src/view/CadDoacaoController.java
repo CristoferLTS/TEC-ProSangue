@@ -102,7 +102,7 @@ public class CadDoacaoController implements Initializable {
             error.setTitle("Não foi Possível Realizar o Cadastro");
             error.showAndWait();
         }
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
         confirmation.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         confirmation.setHeaderText("Sucesso");
         confirmation.setTitle("Cadastro Realizado com sucesso");

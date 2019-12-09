@@ -23,7 +23,7 @@ CREATE TABLE Doacao (
     Peso FLOAT,
     Pulso FLOAT,
     Temperatura FLOAT,
-    Pressao FLOAT
+    Pressao VARCHAR(5)
 );
 
 CREATE TABLE Resposta (
@@ -42,10 +42,9 @@ CREATE TABLE Testes (
     HepatiteC BOOLEAN DEFAULT FALSE,
     HTVL BOOLEAN DEFAULT FALSE,
     Chagas BOOLEAN DEFAULT FALSE,
-    Tipo_Sanguineo CHAR(1),
+    Tipo_Sanguineo VARCHAR(2),
     Rh CHAR(1),
-    Anticorpos FLOAT,
-    Resultado BOOLEAN DEFAULT FALSE
+    Anticorpos FLOAT
 );
 
 CREATE TABLE Pergunta (

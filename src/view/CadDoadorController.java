@@ -5,22 +5,14 @@
  */
 package view;
 
-import view.ConsultaDoadorController;
 import DAO.Dao;
 import Services.ClienteCEPWS;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -51,11 +43,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tipoDados.Doador;
 
-/**
- * FXML Controller class
- *
- * @author cristofer
- */
 public class CadDoadorController implements Initializable {
 
     ObservableList<String> ufs = FXCollections.observableArrayList("AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO");
@@ -162,7 +149,7 @@ public class CadDoadorController implements Initializable {
         } catch (SQLException ex) {
             System.out.println("Erro em Inserir novo Doador" + ex);
         }
-        Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
         confirmation.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         confirmation.setHeaderText("Sucesso");
         confirmation.setTitle("Cadastro Realizado com sucesso");
@@ -219,7 +206,7 @@ public class CadDoadorController implements Initializable {
                 } catch (SQLException ex) {
                     System.out.println("Deu ruin");
                 }
-                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                Alert confirmation = new Alert(Alert.AlertType.INFORMATION);
                 confirmation.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 confirmation.setHeaderText("Sucesso");
                 confirmation.setTitle("Atualização Realizada com sucesso");

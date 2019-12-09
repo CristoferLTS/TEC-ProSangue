@@ -1,0 +1,28 @@
+.label{
+    -fx-font-family: arial;
+    -fx-font-size: 14px;
+}
+
+.button{
+  -fx-display: inline-block;
+  -fx-font-weight: 400;
+  -fx-text-fill: white;
+  -fx-text-align: center;
+  -fx-vertical-align: middle;
+  -fx-background-color: transparent;
+  -fx-border: 1px;
+  -fx-font-size: 14px;
+  -fx-font-color: white;
+  -fx-line-height: 1.5;
+  -fx-border-radius: 0.25px;
+  -fx-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -fx-color: #fff;
+  -fx-background-color: #007bff;
+  -fx-border-color: #007bff;
+  -fx-font-family: arial;
+}
+
+.button:hover {
+  -fx-background-color: #fff;
+  -fx-text-fill: #007bff;
+}
